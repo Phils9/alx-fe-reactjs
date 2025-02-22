@@ -7,7 +7,8 @@ import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';
-import { UserContext } from './UserContext'; // Correct import for named export
+import { UserContext } from './UserContext'; // Import UserContext
+import ProfilePage from './components/ProfilePage'; // Import ProfilePage
 
 function App() {
     const [count, setCount] = useState(0);
@@ -16,8 +17,7 @@ function App() {
     const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
 
     return (
-        // Wrap the entire application with UserContext.Provider
-        <UserContext.Provider value={userData}>
+        <>
             <div>
                 <a href="https://vite.dev" target="_blank">
                     <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -45,7 +45,12 @@ function App() {
             <MainContent />
             <Footer />
             <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
-        </UserContext.Provider>
+
+            {/* Wrap ProfilePage with UserContext.Provider */}
+            <UserContext.Provider value={userData}>
+                <ProfilePage />
+            </UserContext.Provider>
+        </>
     );
 }
 
