@@ -1,9 +1,20 @@
+import React from "react";
+
 function Home() {
   return (
-      <div style={{ padding: '20px' }}>
-          <h1>Welcome to Our Company</h1>
-          <p>We are dedicated to delivering excellence in all our services.</p>
-      </div>
+    <div
+      style={{
+        padding: "20px",
+        backgroundColor: "#e3f2fd",
+        textAlign: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <h2 style={{ color: "#0277bd", marginBottom: "10px" }}>Welcome to Our Website</h2>
+      <p style={{ color: "#01579b", fontSize: "18px", maxWidth: "600px", margin: "0 auto" }}>
+        Explore our platform and discover amazing opportunities and services tailored just for you.
+      </p>
+    </div>
   );
 }
 

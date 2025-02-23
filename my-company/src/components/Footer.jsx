@@ -1,8 +1,22 @@
+import React from "react";
+
 function Footer() {
   return (
-      <footer style={{ padding: '20px', backgroundColor: '#f0f0f0', textAlign: 'center' }}>
-          <p>© 2025 My Company. All rights reserved.</p>
-      </footer>
+    <footer
+      style={{
+        backgroundColor: "#2c3e50",
+        color: "#ecf0f1",
+        textAlign: "center",
+        padding: "15px",
+        position: "fixed",
+        bottom: "0",
+        width: "100%",
+      }}
+    >
+      <p style={{ margin: "0", fontSize: "14px" }}>
+        © {new Date().getFullYear()} My Company. All rights reserved.
+      </p>
+    </footer>
   );
 }
 
