@@ -1,7 +1,8 @@
 import React from 'react';
 import RegistrationForm from './components/RegistrationForm';
-import FormikForm from './components/FormikForm';
+import FormikForm from './components/formikForm';
 import './App.css';
+
 function App() {
   return (
     <div>
@@ -13,7 +14,7 @@ function App() {
       </div>
 
       <div className="form-container">
-        <h2>Formik Form</h2>
+        <h2>User Registration with Formik</h2>
         <FormikForm />
       </div>
     </div>
