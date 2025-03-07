@@ -8,7 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import useAuth from './useAuth'; // Import the useAuth hook
 
 function App() {
-  const { login, logout } = useAuth(); // Use the useAuth hook
+  const { isAuthenticated, login, logout } = useAuth(); // Use the useAuth hook
 
   return (
     <Router>
@@ -34,7 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route element={<ProtectedRoute />}>
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
           <Route path="/profile/*" element={<Profile />} />
         </Route>
         <Route path="/blog/:id" element={<BlogPost />} />
