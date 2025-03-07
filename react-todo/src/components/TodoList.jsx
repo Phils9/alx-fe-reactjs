@@ -1,49 +1,32 @@
+// src/components/TodoList.jsx
 import React, { useState } from 'react';
+import todosData from '../data/todos';
+import AddTodoForm from './AddTodoForm';
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([
-    { id: 1, text: 'Learn React', completed: false },
-    { id: 2, text: 'Build a Todo App', completed: false },
-  ]);
-  const [newTodo, setNewTodo] = useState('');
+  const [todos, setTodos] = useState(todosData);
 
-  const addTodo = (e) => {
-    e.preventDefault();
-    if (newTodo.trim() === '') return;
-    const todo = { id: Date.now(), text: newTodo, completed: false };
-    setTodos([...todos, todo]);
-    setNewTodo('');
+  const addTodo = (text) => {
+    const newTodo = { id: Date.now(), text, completed: false };
+    setTodos([...todos, newTodo]);
   };
 
   const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
   };
 
   const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos(todos.filter(todo => todo.id !== id));
   };
 
   return (
     <div>
       <h1>Todo List</h1>
-      <form onSubmit={addTodo}>
-        <input
-          data-testid="todo-input"
-          type="text"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Add a new todo"
-        />
-        <button data-testid="add-button" type="submit">
-          Add
-        </button>
-      </form>
+      <AddTodoForm onAdd={addTodo} />
       <ul>
-        {todos.map((todo) => (
+        {todos.map(todo => (
           <li key={todo.id}>
             <span
               style={{
