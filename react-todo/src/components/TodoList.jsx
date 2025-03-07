@@ -38,13 +38,14 @@ const TodoList = () => {
           onChange={(e) => setNewTodo(e.target.value)}
           placeholder="Add a new todo"
         />
-        <button type="submit">Add</button>
+        <button data-testid="add-button" type="submit">
+          Add
+        </button>
       </form>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
             <span
-              className="todo-text"
               style={{
                 textDecoration: todo.completed ? 'line-through' : 'none',
                 cursor: 'pointer',
@@ -53,7 +54,9 @@ const TodoList = () => {
             >
               {todo.text}
             </span>
-            <button className="delete-button" onClick={() => deleteTodo(todo.id)}>Delete</button>
+            <button data-testid="delete-button" onClick={() => deleteTodo(todo.id)}>
+              Delete
+            </button>
           </li>
         ))}
       </ul>

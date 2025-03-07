@@ -5,26 +5,27 @@ import '@testing-library/jest-dom';
 
 describe('TodoList Component', () => {
   // Test 1: Renders initial todos
-  test('renders initial todos', () => {
+  test('should render initial todos', () => {
     render(<TodoList />);
-    expect(screen.getByText('Learn React')).toBeInTheDocument();
-    expect(screen.getByText('Build a Todo App')).toBeInTheDocument();
+    expect(screen.getByText('Learn React')).toHaveTextContent('Learn React');
+    expect(screen.getByText('Build a Todo App')).toHaveTextContent('Build a Todo App');
   });
 
   // Test 2: Adds a new todo
-  test('adds a new todo', () => {
+  test('should add a new todo', () => {
     render(<TodoList />);
     const input = screen.getByTestId('todo-input');
-    const addButton = screen.getByTextId('add-button');
+    const addButton = screen.getByTestId('add-button');
 
     fireEvent.change(input, { target: { value: 'New Todo' } });
     fireEvent.click(addButton);
 
-    expect(screen.getByText('New Todo')).toBeInTheDocument();
+    const newTodo = screen.getByText('New Todo');
+    expect(newTodo).toHaveTextContent('New Todo');
   });
 
   // Test 3: Toggles a todo
-  test('toggles a todo', () => {
+  test('should toggle a todo', () => {
     render(<TodoList />);
     const todoText = screen.getByText('Learn React');
 
@@ -36,9 +37,9 @@ describe('TodoList Component', () => {
   });
 
   // Test 4: Deletes a todo
-  test('deletes a todo', () => {
+  test('should delete a todo', () => {
     render(<TodoList />);
-    const deleteButton = screen.getAllByRole('button', { name: 'Delete'})[0];
+    const deleteButton = screen.getAllByTestId('delete-button')[0];
 
     fireEvent.click(deleteButton);
     expect(screen.queryByText('Learn React')).not.toBeInTheDocument();
