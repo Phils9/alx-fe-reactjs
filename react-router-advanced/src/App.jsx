@@ -35,7 +35,7 @@ function App() {
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
           <Route path="/profile/*" element={<Profile />} />
         </Route>
-        <Route path="/blog/:postId" element={<BlogPost />} />
+        <Route path="/blog/:id" element={<BlogPost />} /> 
       </Routes>
     </Router>
   );
