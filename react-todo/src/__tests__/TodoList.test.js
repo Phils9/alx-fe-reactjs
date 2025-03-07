@@ -14,8 +14,8 @@ describe('TodoList Component', () => {
   // Test 2: Adds a new todo
   test('adds a new todo', () => {
     render(<TodoList />);
-    const input = screen.getByPlaceholderText('Add a new todo');
-    const addButton = screen.getByText('Add');
+    const input = screen.getByTestId('todo-input');
+    const addButton = screen.getByTextId('add-button');
 
     fireEvent.change(input, { target: { value: 'New Todo' } });
     fireEvent.click(addButton);
@@ -38,7 +38,7 @@ describe('TodoList Component', () => {
   // Test 4: Deletes a todo
   test('deletes a todo', () => {
     render(<TodoList />);
-    const deleteButton = screen.getAllByText('Delete')[0];
+    const deleteButton = screen.getAllByRole('button', { name: 'Delete'})[0];
 
     fireEvent.click(deleteButton);
     expect(screen.queryByText('Learn React')).not.toBeInTheDocument();
