@@ -5,9 +5,11 @@ import Profile from './components/Profile';
 import Login from './components/Login';
 import BlogPost from './components/BlogPost';
 import ProtectedRoute from './components/ProtectedRoute';
+import useAuth from './useAuth'; // Import the useAuth hook
 
 function App() {
-  const isAuthenticated = false; // Simulate authentication status
+  const { login, logout } = useAuth(); // Use the useAuth hook
+
   return (
     <Router>
       <nav>
@@ -32,10 +34,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+        <Route element={<ProtectedRoute />}>
           <Route path="/profile/*" element={<Profile />} />
         </Route>
-        <Route path="/blog/:id" element={<BlogPost />} /> 
+        <Route path="/blog/:id" element={<BlogPost />} />
       </Routes>
     </Router>
   );
