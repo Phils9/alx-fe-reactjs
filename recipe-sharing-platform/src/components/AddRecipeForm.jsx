@@ -35,7 +35,7 @@ const AddRecipeForm = () => {
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold mb-6">Add a New Recipe</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow-md">
         <div>
           <label className="block text-sm font-medium text-gray-700">Recipe Title</label>
           <input
