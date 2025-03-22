@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
-  const [instructions, setInstructions] = useState('');
+  const [steps, setSteps] = useState('');
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     const newErrors = {};
     if (!title.trim()) newErrors.title = 'Title is required';
     if (!ingredients.trim()) newErrors.ingredients = 'Ingredients are required';
-    if (!instructions.trim()) newErrors.instructions = 'Instructions are required';
+    if (!steps.trim()) newErrors.steps = 'Steps are required';
     return newErrors;
   };
 
@@ -23,12 +23,12 @@ const AddRecipeForm = () => {
     }
 
     // Handle form submission (e.g., add recipe to data.json or send to an API)
-    console.log('Recipe Submitted:', { title, ingredients, instructions });
+    console.log('Recipe Submitted:', { title, ingredients, steps });
 
     // Clear form fields and errors
     setTitle('');
     setIngredients('');
-    setInstructions('');
+    setSteps('');
     setErrors({});
   };
 
@@ -57,14 +57,14 @@ const AddRecipeForm = () => {
           {errors.ingredients && <p className="text-red-500 text-sm">{errors.ingredients}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Instructions</label>
+          <label className="block text-sm font-medium text-gray-700">Steps</label>
           <textarea
-            value={instructions}
-            onChange={(e) => setInstructions(e.target.value)}
+            value={steps}
+            onChange={(e) => setSteps(e.target.value)}
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
             rows="6"
           />
-          {errors.instructions && <p className="text-red-500 text-sm">{errors.instructions}</p>}
+          {errors.steps && <p className="text-red-500 text-sm">{errors.steps}</p>}
         </div>
         <button
           type="submit"
