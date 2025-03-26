@@ -16,7 +16,6 @@ const Search = () => {
 
     try {
       const data = await fetchUserData(username, location, repos);
-      console.log("API Response:", data);
       setUsers(data.items || []);
     } catch {
       setError('Looks like we cant find the user');
